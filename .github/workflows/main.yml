@@ -37,4 +37,5 @@ jobs:
           echo "Running build"
           ls -l $GITHUB_WORKSPACE
           mqsicreatebar -data $GITHUB_WORKSPACE -b /tmp/cb-test.bar -cleanBuild -p TopLevelFlows Subflows -o TopLevelFlows/TestFlow.msgflow  -l SubflowStaticLib
+          echo && echo && echo "NOT RUNNING UNIT TESTS"
           echo "Convert to an application to enable easy unit testing"
