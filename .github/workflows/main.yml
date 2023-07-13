@@ -1,0 +1,38 @@
+# CI build to validate PR changes before merging
+
+name: ace-ci
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  # This workflow contains a single job called "buildAndTest"
+  buildAndTest:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    container: 
+      image: tdolby/experimental:ace-full-12.0.8.0-ubuntu
+      env:
+        LICENSE: accept
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+        # This option causes the submodules to be pulled in recursively
+        with:
+          submodules: 'recursive'
+
+      - name: Build the application and unit test it
+        shell: bash
+        run: |
+          # This shell has mqsiprofile already loaded
+          echo "Running build"
+          mqsilist
+          echo "Convert to an application to enable easy unit testing"
