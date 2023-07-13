@@ -1,12 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>TopLevelFlows</name>
+	<name>SubflowStaticLib</name>
 	<comment></comment>
 	<projects>
-		<project>Subflows</project>
-		<project>SubflowStaticLib</project>
 	</projects>
 	<buildSpec>
+		<buildCommand>
+			<name>com.ibm.etools.mft.applib.applibbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.ibm.etools.mft.applib.applibresourcevalidator</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.ibm.etools.mft.connector.policy.ui.PolicyBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.ibm.etools.mft.connector.ui.editor.connectorServiceBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.ibm.etools.mft.connector.ui.editor.connectorEventBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.ibm.etools.mft.uri.sharedlibbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
 		<buildCommand>
 			<name>com.ibm.etools.mft.applib.mbprojectbuilder</name>
 			<arguments>
@@ -99,6 +127,7 @@
 		</buildCommand>
 	</buildSpec>
 	<natures>
+		<nature>com.ibm.etools.msgbroker.tooling.libraryNature</nature>
 		<nature>com.ibm.etools.msgbroker.tooling.messageBrokerProjectNature</nature>
 	</natures>
 </projectDescription>
