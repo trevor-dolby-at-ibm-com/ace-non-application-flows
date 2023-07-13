@@ -1,6 +1,15 @@
 # ace-non-application-flows
 Examples of ACE flows outside applications
 
+Uses the [ace-full](https://github.com/ot4i/ace-docker/tree/main/experimental/ace-full) image to
+run mqsicreatebar, which allows the building of non-application resources. The `ibmint` command 
+can be run from much smaller images, but is not intended to handle non-application (top-level)
+flows. 
+
+See the [GitHub Action YAML](.github/workflows/main.yml) definition for details.
+
+## Instructions
+
 ```
 mqsicreatebar -data ~/github.com/ace-non-application-flows -b /tmp/cb-test.bar -cleanBuild -o TopLevelFlows/TestFlow.msgflow
 ```
