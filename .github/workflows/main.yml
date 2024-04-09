@@ -19,7 +19,7 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     container: 
-      image: tdolby/experimental:ace-full-12.0.8.0-ubuntu
+      image: tdolby/experimental:ace-full-12.0.10.0-ubuntu
       env:
         LICENSE: accept
     steps:
@@ -36,6 +36,4 @@ jobs:
           export DISPLAY=:99
           echo "Running build"
           ls -l $GITHUB_WORKSPACE
-          mqsicreatebar -data $GITHUB_WORKSPACE -b /tmp/cb-test.bar -cleanBuild -p TopLevelFlows Subflows -o TopLevelFlows/TestFlow.msgflow  -l SubflowStaticLib
-          echo && echo && echo "NOT RUNNING UNIT TESTS"
-          echo "Convert to an application to enable easy unit testing"
+          bash ./build-and-ut.sh

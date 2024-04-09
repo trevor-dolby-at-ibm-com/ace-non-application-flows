@@ -1,0 +1,11 @@
+
+
+CREATE COMPUTE MODULE TestSubflow_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot = InputRoot;
+		-- Set a field to something to illustrate testing
+		SET OutputRoot.Properties.Topic = 'topicSetByFlow';
+		RETURN TRUE;
+	END;
+END MODULE;

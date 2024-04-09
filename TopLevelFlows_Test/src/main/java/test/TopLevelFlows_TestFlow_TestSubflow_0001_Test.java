@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import com.ibm.integration.test.v1.NodeSpy;
 import com.ibm.integration.test.v1.SpyObjectReference;
+import com.ibm.integration.test.v1.TestMessageAssembly;
 import com.ibm.integration.test.v1.TestSetup;
 import com.ibm.integration.test.v1.exception.TestException;
 
@@ -52,15 +53,20 @@ public class TopLevelFlows_TestFlow_TestSubflow_0001_Test {
 		// Initialise a NodeSpy
 		NodeSpy nodeSpy = new NodeSpy(nodeReference);
 
+        // Declare a new TestMessageAssembly object for the blank message being sent into the node
+        TestMessageAssembly inputMessageAssembly = new TestMessageAssembly();
+
+        // Call the message flow node with the Message Assembly
+        nodeSpy.evaluate(inputMessageAssembly, false /* don't propagate beyond this node */ , "Input");
+        
+        // Assert the terminal propagate count for the message
+        assertThat(nodeSpy, terminalPropagateCountIs("Output", 1));
+
+        /* Compare Output Message 1 at output terminal out */
+        TestMessageAssembly actualMessageAssembly = nodeSpy.propagatedMessageAssembly("Output", 1);
+
 		// Check that the actual Node name matches the expected name
-		assertThat(nodeSpy.nodeName(), Matchers.equalTo("TestSubflow"));
-
-		// Assert the number of times that the node is called
-		assertThat(nodeSpy, nodeCallCountIs(0));
-
-		// Assert the terminal propagate count for the message
-		assertThat(nodeSpy, terminalPropagateCountIs("Output", 0));
-
+		assertThat(actualMessageAssembly.messagePath("Properties.Topic").getStringValue(), Matchers.equalTo("topicSetByFlow"));
 	}
 
 }
