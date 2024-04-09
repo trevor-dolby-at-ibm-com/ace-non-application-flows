@@ -36,4 +36,4 @@ jobs:
           export DISPLAY=:99
           echo "Running build"
           ls -l $GITHUB_WORKSPACE
-          bash ./build-and-ut.sh
+          ./build-and-ut.sh
